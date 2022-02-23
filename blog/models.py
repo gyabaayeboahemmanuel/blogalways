@@ -1,6 +1,6 @@
 from django.db import models
 from django.forms import DateTimeField
-
+from ckeditor.fields import RichTextField
 # Create your models here.
 class Blog(models.Model):
     title = models.CharField(max_length = 255, name= "title")
@@ -15,3 +15,7 @@ class images (models.Model):
 class text (models.Model):
     post = models.ForeignKey("Blog", on_delete=models.CASCADE)
     text = models.TextField()
+
+class Post(models.Model):
+    content = RichTextField
+    

@@ -13,3 +13,10 @@ def blog_post (request):
     
 def index (request):
     return render (request, "index.html")
+def blog_details(request, pk):
+    blog = Blog.objects.all()
+    #for blog_d in blog
+    content ={
+        
+    }
+    return render (request, "blog/blog_details.html" ,content)

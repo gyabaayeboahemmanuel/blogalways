@@ -18,9 +18,12 @@ from django.contrib import admin
 from django.urls import path,include
 from blog import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blogs/', include('blog.urls')),
-    path('', views.index ),
+    path('', views.index, name = "index" ),
+    path(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    
     #path("podcast/", include('podcast.urls')),
 ]
