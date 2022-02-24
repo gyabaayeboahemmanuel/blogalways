@@ -5,54 +5,37 @@
 {% block content %}
 
 <div class="container ">
-    <div class="row align-items-center">
+    <div class="d-flex align-items-center">
+        <div class="col-12">
+            <h2>Display of content</h2>
+            <a href="{% url 'blog:ckeditor-form'%}" class="btn btn-primary">Post a Blog</a>
+            {% for blg in blog %}
 
-        <div class="col-12 py-5">
-            <div class="card md-5 w-75" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="{% static '/images/abcd.jpg' %}" alt="image not available" class="img-fluid rounded-start" style="max-height: fit-content;">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Title of Blog </h5><span class=""> Name of Writer</span> 
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus tempore architecto totam aliquid ipsa labore omnis nesciunt id dolores voluptates.
-                            </p>
-                            <p class="card-text text-muted">
-                                Date Time Category .
-                            </p>
-                            <div class="text-dark text-align-end">
-                                Read more
-                            </div>
-                        </div>
-                    </div>
-                </div>  
-            </div>
-        
             <div class="col-12 py-5">
-                <div class="card md-5" style="max-width: 540px;">
+                <div class="card md-5 w-75" style="max-width: 540px;">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="{% static '/images/aa.jpg' %}" alt="image not available" class="img-fluid rounded-start">
+                            <img src="{% static '/images/abcd.jpg' %}" alt="image not available" class="img-fluid rounded-start" style="max-height: fit-content;">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">Title of Blog</h5>
+                                <h5 class="card-title">{{blg.title}} </h5><span class=""> </span> 
                                 <p class="card-text">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus tempore architecto totam aliquid ipsa labore omnis nesciunt id dolores voluptates.
+                                    {{blg.content}}
                                 </p>
                                 <p class="card-text text-muted">
-                                    Date Time Category .
+                                    {{blg.date}} {{blg.content}} 
                                 </p>
-                                
+                                <div class="text-dark text-align-end">
+                                    <a href="{% url 'blog:blog_details' blg.id %}" class="unstyled">Read more</a>
+                                </div>
                             </div>
                         </div>
                     </div>  
-                </div>
-            </div>
-
+                </div>        
+            {% endfor %}
+           
         </div>
-    </div>       
+    </div>
 </div>
 {% endblock content %}

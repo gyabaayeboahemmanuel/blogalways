@@ -1,21 +1,14 @@
+
 from django.db import models
 from django.forms import DateTimeField
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
+
 # Create your models here.
 class Blog(models.Model):
     title = models.CharField(max_length = 255, name= "title")
     date = models.DateTimeField(auto_now_add = True)
     def __str__(self):
         return self.title
-
-class images (models.Model):
-    post = models.ForeignKey("Blog", on_delete=models.CASCADE)
-    image = models.ImageField(upload_to = "media/images")
-    
-class text (models.Model):
-    post = models.ForeignKey("Blog", on_delete=models.CASCADE)
-    text = models.TextField()
-
-class Post(models.Model):
-    content = RichTextField
-    
+    content = RichTextUploadingField()
+    category = models.CharField(max_length = 255, name = "category")
