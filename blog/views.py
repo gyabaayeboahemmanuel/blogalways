@@ -32,7 +32,7 @@ def blog_details(request, id):
     blog = get_object_or_404(Blog, id = id)
    
     content ={
-        blog: "blog",
+        "blog": blog,
     }
     return render (request, "blog/blog_details.html", content)
 

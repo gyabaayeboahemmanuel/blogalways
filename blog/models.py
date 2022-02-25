@@ -8,7 +8,11 @@ from ckeditor_uploader.fields import RichTextUploadingField
 class Blog(models.Model):
     title = models.CharField(max_length = 255, name= "title")
     date = models.DateTimeField(auto_now_add = True)
+    thumbnail = models.ImageField( upload_to="blog/thumbnail/")
     def __str__(self):
         return self.title
     content = RichTextUploadingField()
     category = models.CharField(max_length = 255, name = "category")
+
+    class Meta:
+        ordering = ['-id']

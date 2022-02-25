@@ -15,16 +15,16 @@
                 <div class="card md-5 w-75" style="max-width: 540px;">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="{% static '/images/abcd.jpg' %}" alt="image not available" class="img-fluid rounded-start" style="max-height: fit-content;">
+                            <img src="{{blg.thumbnail.url}}" alt="Image not Found" class="img-fluid rounded-start" style="max-height: fit-content;">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">{{blg.title}} </h5><span class=""> </span> 
                                 <p class="card-text">
-                                    {{blg.content}}
+                                    {{blg.content | safe}}
                                 </p>
                                 <p class="card-text text-muted">
-                                    {{blg.date}} {{blg.content}} 
+                                    {{blg.date}}  
                                 </p>
                                 <div class="text-dark text-align-end">
                                     <a href="{% url 'blog:blog_details' blg.id %}" class="unstyled">Read more</a>
