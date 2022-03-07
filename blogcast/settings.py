@@ -128,7 +128,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 #Media Files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 #ckEditor 
 from ckeditor.configs import DEFAULT_CONFIG  # noqa

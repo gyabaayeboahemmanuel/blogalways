@@ -20,10 +20,13 @@ class CkEditorFormView(generic.FormView):
 ckeditor_form_view = CkEditorFormView.as_view()
 
 @login_required
-def article_post (request):
+def article (request):
     articles = Articles.objects.all()
+    posts = list(Articles.objects.all())
+    posts = [posts[i:i+3] for i in range(0, len(posts), 3)]
     context = {
         "articles":articles,
+        "posts": posts,
     }
     return render(request, "article/articles.html", context)
     
@@ -32,10 +35,10 @@ def index (request):
 
 
 def article_details(request, id):
-    article = get_object_or_404(article, id = id)
+    article = get_object_or_404(Articles, id = id)
    
     content ={
-        "article": article,
+        "articles": article,
     }
     return render (request, "article/article_details.html", content)
 
@@ -52,5 +55,4 @@ def post_article(request):
     context ={
         "postarticleforms": postarticleforms,
     }
-    
     return render(request, "articles/post_article.html", context)

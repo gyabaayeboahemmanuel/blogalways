@@ -15,6 +15,7 @@ User = get_user_model()
 # Create your views here.
 
 def signup(request):
+    print("..................geting reqeust ....................")
     if request.method == "POST":
         print("..................geting reqeust ....................")
 
@@ -22,7 +23,7 @@ def signup(request):
         profile_form = UserProfileForm(data=request.POST, files=request.FILES)
         print("..................gotten form  ....................")
         
-        if user_form.is_valid() and profile_form.is_valid():
+        if user_form.is_valid() or profile_form.is_valid():
             user_form.save()
             profile_form.save()
             messages.success(request, 'user created')
@@ -139,11 +140,19 @@ def edit_user_profile(request, pk):
            
     
 
-def view_profile(request, id):
+def all_blogs_view(request):
+    users = User.objects.all()
+
+    return render(request, "blog/blog.html",
+    {
+        "users": users,
+        
+    })
+def single_blog_view(request, id):
     user = get_object_or_404(User, id = id)
 
-    return render(request, "staff_detail.html",
+    return render(request, "blog/single_blog_page.html",
     {
         "user": user,
-        #"staff": staff,
+     
     })

@@ -11,7 +11,7 @@
   box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.6%;
   background: #fff;
-  line-height: 1.4;
+  line-height: 1.2;
   font-family: sans-serif;
   border-radius: 5px;
   overflow: hidden;
@@ -19,17 +19,19 @@
 }
 .blog-card a {
   color: inherit;
+  text-decoration: none;
 }
 .blog-card a:hover {
-  color: #5ad67d;
+  color: #017cf7;
 }
-.blog-card:hover .photo {
+/* .blog-card:hover .photo {
   transform: scale(1.3) rotate(3deg);
-}
+} */
+
 .blog-card .meta {
   position: relative;
   z-index: 0;
-  height: 200px;
+  height: 100px;
 }
 .blog-card .photo {
   position: absolute;
@@ -86,11 +88,14 @@
   font-size: 1.7rem;
 }
 .blog-card .description h2 {
-  font-size: 1rem;
-  font-weight: 300;
+  font-size: 0.5rem;
+  font-weight: 100;
   text-transform: uppercase;
   color: #a2a2a2;
   margin-top: 5px;
+}
+.blog-card .description p .d-details {
+    font-size: 0.2 rem;
 }
 .blog-card .description .read-more {
   text-align: right;
@@ -116,7 +121,7 @@
   }
   .blog-card .meta {
     flex-basis: 40%;
-    height: auto;
+    height: 100px;
   }
   .blog-card .description {
     flex-basis: 60%;

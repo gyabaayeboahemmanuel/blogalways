@@ -5,61 +5,47 @@
 {% block content %}
 
 <div class="container ">
-    <div class="d-flex align-items-center">
-        <div class="col-12">
-            <h2>Display of content</h2>
-            <a href="{% url 'article:ckeditor-form'%}" class="btn btn-primary">Post an article</a>
-            {% for blg in articles %}
-
-            {% comment %} <div class="col-12 py-5">
-                <div class="card md-5 w-75" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="{{blg.thumbnail.url}}" alt="Image not Found" class="img-fluid rounded-start" style="max-height: fit-content;">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                 <a href="{% url 'article:article_details' blg.id %}" ><h5 class="card-title">{{blg.title}} </h5> </a> 
-                                
-                                <p class="card-text">
-                                   {{blg.content | safe |truncatewords:15}} 
-                                </p>
-                                <p class="card-text text-muted">
-                                     {{blg.date}}   
-                                </p>
-                                <div class="text-dark text-align-end">
-                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                </div>    
-                {% endcomment %}
+    <div class="align-items-start">
+        <div class="col-8">
+          <a href="{% url 'article:post_article'%}" class="btn btn-primary">Start Writing</a>
+          {% for chunk in posts %}
+            <div class= "col-6">
+            {% for blg in chunk %}
+           
                 
-                <div class="blog-card">
                   <div class="blog-card alt">
                     <div class="meta">
-                      <div class="photo" style="background-image: url({{blg.thumbnail.url}}"></div>
+                      <div class="photo" style="background-image: url({{blg.thumbnail.url}})"></div>
                       <ul class="details">
-                        <li class="author"><a href="#">user name</a></li>
-                        <li class="date">Nov. 13, 2020</li>
                         <li class="tags">
                          
                         </li>
                       </ul>
                     </div>
                     <div class="description">
-                      <h1>{{blg.title}} </h1>
-                      <h2>Lorem ipsum dolor sit amet</h2>
-                      <p> {{blg.content | safe |truncatewords:15}}</p>
+                      <div class="">
+                            <a href="#" class="d-md-flex ">
+                                <img src="{{blg.user.profile_picture.url}}" styles="text-decoration:none"" alt="{{blg.user.user.profile.dateSignedUp}}" width="20" height="20">  <h6 class="px-4">{{blg.User}}</h6>
+                            </a>
+                      </div>
+                        
+                       
+                      <a href="{% url 'article:article_details' blg.id %}" styles="text-decoration:none"> <h1> {{blg.title}} </h1></a>
+                      <p class="d-details" style="font-size:15px"> {{blg.content | safe |truncatewords:12}}</p>
+                      <p class="" style="font-size:10px">
+                        {{blg.category}}
+                      </p>
                       <p class="read-more">
                         {{blg.date}} 
                       </p>
                     </div>
                   </div>
-                </div>
-            {% endfor %}
-           
+            {% endfor %} 
+            <div>
+          {% endfor %}     
+        </div>
+        <div class="col-4"> 
+
         </div>
     </div>
 </div>
