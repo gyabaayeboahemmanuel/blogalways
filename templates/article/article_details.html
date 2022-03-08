@@ -1,19 +1,21 @@
 {% extends "base.html" %}
+
+
 {% block content %}
 
 <div class="container">
     
     <div class="col-12 py-5">
-        <div class="md-5 w-75">
+        <div class="md-5 w-100">
             <div class="row g-0">
                 <h1 class="card-title">{{articles.title}} </h1>
                 <div class="col-md-12">
-                    <img src="{{articles.thumbnail.url}}" alt="Image not Found" width ="100%" class="img-fluid rounded-start" style="max-height: fit-content;">
+                    <img src="{{articles.thumbnail.url}}" alt="Image not Found" width ="100%" class="img-fluid rounded-start" style="max-height: 30vh; size: 100%;">
                 </div>
                 <div class="row g-0">
                     {{articles.date}} 
                     
-                    <p class="card-text">
+                    <p class="card-text" >
                         {{articles.content | safe}}
                     </p>
                     <p class="card-text text-muted">

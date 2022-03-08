@@ -16,7 +16,7 @@ class CkEditorForm(forms.Form):
     )
 
     
-class postarticle (forms.ModelForm):
+class post_article_forms (forms.ModelForm):
     class Meta: 
         model = Articles
         fields = ("title","thumbnail", "content", "category")

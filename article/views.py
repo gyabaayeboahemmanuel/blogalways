@@ -1,23 +1,23 @@
 from email import message
 from importlib.metadata import files
 from multiprocessing import context
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 from .models import *
 from django.urls import reverse
 from django.views import generic
 
-from . import forms
+from .forms import *
 
 
-class CkEditorFormView(generic.FormView):
-    form_class = forms.CkEditorForm
-    template_name = "article/post_article.html"
-    def get_success_url(self):
-        return reverse("ckeditor-form")
+# class CkEditorFormView(generic.FormView):
+#     form_class = forms.CkEditorForm
+#     template_name = "article/post_article.html"
+#     def get_success_url(self):
+#         return reverse("ckeditor-form")
 
-ckeditor_form_view = CkEditorFormView.as_view()
+# ckeditor_form_view = CkEditorFormView.as_view()
 
 @login_required
 def article (request):
@@ -44,15 +44,17 @@ def article_details(request, id):
 
 def post_article(request):
     if request.method == "POST":
-        postarticleforms = post_article(data= request.POST, files=request.FILES)
+        postarticleforms = post_article_forms(data= request.POST, files=request.FILES)
         if postarticleforms.is_valid():
+            print("about to be saved........................................")
             postarticleforms.save()
-            message.success(request, 'Post Create')
+            message.success(request, 'Post Created')
+            return redirect("/articles/")
         else:
             message.warning(request, "Invalid data entry")
     else: 
-        postarticleforms = post_article()
+        postarticleforms = post_article_forms()
     context ={
         "postarticleforms": postarticleforms,
     }
-    return render(request, "articles/post_article.html", context)
+    return render(request, "article/post_article.html", context)

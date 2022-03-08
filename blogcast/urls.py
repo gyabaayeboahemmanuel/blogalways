@@ -16,6 +16,7 @@ urlpatterns = (
     #path("accounts/login", login, name="login"), 
     path('', views.index, name = "index" ),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    path('accounts/', include('allauth.urls')),
     
     #path("podcast/", include('podcast.urls')),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

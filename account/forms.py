@@ -1,8 +1,7 @@
 from django import forms
-
+from django.contrib.auth.models import User
 from .models import *
 
-User = get_user_model()
 
 class UserForm(forms.ModelForm):
     class Meta:
@@ -10,7 +9,7 @@ class UserForm(forms.ModelForm):
         fields = (
             "username",
             "password",
-           # "password2",
+            # "password2",
             "first_name",
             "last_name",
             "email",
