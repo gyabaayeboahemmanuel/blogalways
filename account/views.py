@@ -23,8 +23,11 @@ def signup(request):
         profile_form = UserProfileForm(data=request.POST, files=request.FILES)
         print("..................gotten form  ....................")
         
-        if user_form.is_valid() or profile_form.is_valid():
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save(commit=False)
+            profile = profile_form.save(commit=False)
             user_form.save()
+
             profile_form.save()
             messages.success(request, 'user created')
             print(".................. form is saved ....................")
