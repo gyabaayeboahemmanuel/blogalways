@@ -8,7 +8,7 @@ User = get_user_model()
 class Profile (models.Model):
     user = models.OneToOneField(User, on_delete= models.CASCADE, related_name="profile")
     profile_picture = models.ImageField(upload_to = "profile/")
-    dateSignedUp = models.DateTimeField(auto_now= True)
+    dateSignedUp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ("-user",)

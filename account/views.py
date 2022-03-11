@@ -15,36 +15,27 @@ User = get_user_model()
 # Create your views here.
 
 def signup(request):
-    print("..................geting reqeust ....................")
     if request.method == "POST":
-        print("..................geting reqeust ....................")
-
         user_form = UserForm(data=request.POST, files=request.FILES)
         profile_form = UserProfileForm(data=request.POST, files=request.FILES)
-        print("..................gotten form  ....................")
         
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save(commit=False)
             profile = profile_form.save(commit=False)
-            user_form.save()
-
-            profile_form.save()
+            profile.user = user
+            user.save()
+            profile.save()
             messages.success(request, 'user created')
-            print(".................. form is saved ....................")
-            return redirect("/user/signup")
-           
+            return redirect("/")
 
         else:
-            print("..................form is not valid ....................")
 
             messages.warning(request, "invalid data entry")
 
     else:
-        print("..................didnit get form data ....................")
 
         user_form = UserForm()
         profile_form = UserProfileForm()
-        print("..................sent empty form ....................")
 
     return render(request, 'registration/signup.html', 
         {
