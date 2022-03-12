@@ -19,14 +19,15 @@ from .forms import *
 
 # ckeditor_form_view = CkEditorFormView.as_view()
 
-@login_required
+
 def article (request):
     articles = Articles.objects.all()
-    posts = list(Articles.objects.all())
-    posts = [posts[i:i+3] for i in range(0, len(posts), 3)]
+    #search
+    search_item = request.GET.get('search_item')
+    if search_item != '' and search_item != None:
+        articles = articles.filter(title__icontains = search_item)
     context = {
         "articles":articles,
-        "posts": posts,
     }
     return render(request, "article/articles.html", context)
     
@@ -42,12 +43,14 @@ def article_details(request, id):
     }
     return render (request, "article/article_details.html", content)
 
+@login_required
 def post_article(request):
     if request.method == "POST":
         postarticleforms = post_article_forms(data= request.POST, files=request.FILES)
         if postarticleforms.is_valid():
-            print("about to be saved........................................")
-            postarticleforms.save()
+            postarticle =  postarticleforms.save(commit=False)
+            postarticle.author = request.user
+            postarticle.save()
             message.success(request, 'Post Created')
             return redirect("/articles/")
         else:

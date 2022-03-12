@@ -27,9 +27,7 @@ def signup(request):
             profile.save()
             messages.success(request, 'user created')
             return redirect("/")
-
         else:
-
             messages.warning(request, "invalid data entry")
 
     else:

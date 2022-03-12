@@ -10,14 +10,56 @@
             <div class="row g-0">
                 <h1 class="card-title">{{articles.title}} </h1>
                 <div class="col-md-12">
-                    <img src="{{articles.thumbnail.url}}" alt="Image not Found" width ="100%" class="img-fluid rounded-start" style="max-height: 30vh; size: 100%;">
+                    <img src="{{articles.image1.url}}" alt="Image not Found" width="12800"  class=" detail_image" height='10%'>
                 </div>
                 <div class="row g-0">
                     {{articles.date}} 
                     
                     <p class="card-text" >
-                        {{articles.content | safe}}
+                        {{articles.content_part1 | safe}}
                     </p>
+                    {% if articles.image2.url is not None %}
+                    <div class="col-md-12">
+                        <img src="{{articles.image2.url}}" alt="" width ="100%" class="img-fluid rounded-start detail_image" style="max-height: 30vh; size: 100%;">
+                    </div>
+                    {% endif %}
+
+                    <p class="card-text" >
+                        {{articles.content_part2 | safe}}
+                    </p>
+                    {% if articles.image3.url is not None %}
+                    <div class="col-md-12">
+                        <img src="{{articles.image3.url}}" alt="" width ="100%" class="img-fluid rounded-start detail_image" style="max-height: 30vh; size: 100%;">
+                    </div>
+                    {% endif %}
+                    <p class="card-text" >
+                        {{articles.content_part3 | safe}}
+                    </p>
+                    {% if articles.image4.url is not None %}
+                    <div class="col-md-12">
+                        <img src="{{articles.image4.url}}" alt="" width ="100%" class="img-fluid rounded-start detail_image" style="max-height: 30vh; size: 100%;">
+                    </div>
+                    {% endif %}
+                    <p class="card-text" >
+                        {{articles.content_part4 | safe}}
+                    </p>
+                    {% if articles.image5.url is not None %}
+                    <div class="col-md-12">
+                        <img src="{{articles.image5.url}}" alt="" width ="100%" class="img-fluid rounded-start detail_image" style="max-height: 30vh; size: 100%;">
+                    </div>
+                    {% endif %}
+                    <p class="card-text" >
+                        {{articles.content_part5 | safe}}
+                    </p>
+                    {% if articles.image6.url is not None %}
+                    <div class="col-md-12">
+                        <img src="{{articles.image6.url}}" alt="" width ="100%" class="img-fluid rounded-start detail_image" style="max-height: 30vh; size: 100%;">
+                    </div>
+                    <p class="card-text" >
+                        {{articles.content_part6 | safe}}
+                    </p>
+                    {% endif%}
+                
                     <p class="card-text text-muted">
                      
                     </p>

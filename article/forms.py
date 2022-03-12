@@ -19,5 +19,12 @@ class CkEditorForm(forms.Form):
 class post_article_forms (forms.ModelForm):
     class Meta: 
         model = Articles
-        fields = ("title","thumbnail", "content", "category")
+        fields = ("title",
+        "image1", "content_part1",
+        "image2", "content_part2",
+        "image3", "content_part3",
+        "image4", "content_part4",
+        "image5", "content_part5",
+        "image6", "content_part6",
+        "category")
 
