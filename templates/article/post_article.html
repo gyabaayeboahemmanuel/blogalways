@@ -5,20 +5,31 @@ Sign Up
 {% endblock title %}
 {% block content %}
 <div class="container">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    <div class="row">
         <div class="col-4">
-
+......................................
         </div>
         <div class="col-md-4">
             <h2 class="text-center text-bolder">Write an Article</h2>
-    <small class="text-center"> fields marked (*) are mandatory </small>
-    <hr>
-    {{ form.errors }}
-    <form method="POST" action="./">
+            <small class="text-center"> fields marked (*) are mandatory </small>
+            <hr>
+            <form action="">
+                {% csrf_token %}
+                {{postarticleforms.media}}
+                {{postarticleforms}}
+            </form>
+        </div>
+        <div class ="col-md-4">
+            ...........................
+        </div> 
+    </div>
 
+</div>
+    {% comment %} <form method="POST" action="./">
+        {{ form.errors }}
         {% csrf_token %}
-        
+        {{ form.media}}
 
         {{ form.non_field_errors }}
 <div class="fieldWrapper">
@@ -100,10 +111,10 @@ Sign Up
 
         </div>
    </div>
-</div>
+</div> {% endcomment %}
 
 <script>
-    $(document).read(function(){
+    {% comment %} $(document).read(function(){
         var max_fields = 7;
         var imgwrapper2 = $(".imagefieldWrapper2")
         var txtwrapper2 = $(".textfieldWrapper2")
@@ -178,6 +189,6 @@ Sign Up
                 y++;
             }
         } 
-        
+         {% endcomment %}
 </script>
 {% endblock %}
