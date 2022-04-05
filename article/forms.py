@@ -16,7 +16,8 @@ class post_article_forms (ModelForm):
         model = Articles
         fields = ["title",
         "thumbnail", "content",
-        "category"]
+        "category",
+        "hashtag",]
 
   # "image2", "content_part2",
         # "image3", "content_part3",

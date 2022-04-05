@@ -22,18 +22,25 @@ from .forms import *
 
 def article (request):
     articles = Articles.objects.all()
+    tags = HashTag.objects.all()
     #search
     search_item = request.GET.get('search_item')
     if search_item != '' and search_item != None:
         articles = articles.filter(title__icontains = search_item)
     context = {
         "articles":articles,
+        "tags": tags,
     }
     return render(request, "article/articles.html", context)
     
 def index (request):
     return render (request, "index.html")
 
+def tag_name(request, tagname):
+
+    return render(request, "article/tag_page.html", {
+        "tagname":tagname,
+    })
 
 def article_details(request, id):
     article = get_object_or_404(Articles, id = id)

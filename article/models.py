@@ -1,4 +1,5 @@
 
+from pyexpat import model
 from unicodedata import category
 from django.db import models
 from django.forms import ChoiceField, DateTimeField
@@ -15,6 +16,10 @@ class Category(models.Model):
     def __str__(self):
         return self.category
     
+class HashTag(models.Model):
+    tagname1 = models.CharField(max_length = 255, name = "tagname1")
+    def __str__(self):
+        return self.tagname1
 
 class Articles(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name ="author2")
@@ -32,10 +37,11 @@ class Articles(models.Model):
     # content_part5 = RichTextField( null = True, blank= True)
     # image6 = models.ImageField( upload_to="articles/thumbnail/" , null=True, blank= True)
     # content_part6 = RichTextField(null = True, blank= True)
-
     category =models.ForeignKey(Category, on_delete=models.PROTECT)
+    hashtag  =models.ForeignKey(HashTag, on_delete=models.CASCADE, null= True, blank=True )
     
     def __str__(self):
             return self.title
     class Meta:
         ordering = ['-id']
+
